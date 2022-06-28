@@ -19,7 +19,7 @@ jobs:
         with:
           registry: quay.io
           username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_ROBOT_TOKEN }}
+          password: ${{ secrets.QUAY_PASSWORD }}
       - name: Build & push the Docker image
         env:
           CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
