@@ -13,14 +13,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Login to DockerHub
+      - name: Login to Quay.io
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_ROBOT_TOKEN }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:example-reported-image
+          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
       - name: report image by action
@@ -28,11 +29,10 @@ jobs:
           # Specify cluster app-proxy
           CF_HOST: "https://saffi.pipeline-team.cf-cd.com"
           CF_API_KEY: ${{ secrets.USER_TOKEN }}
-          CF_CONTAINER_REGISTRY_INTEGRATION: "docker"
+          CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
 
           # report image 
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:example-reported-image
-          # integration with
+          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
           CF_ENRICHERS: "jira, git"
           # use githug token
           CF_GITHUB_TOKEN: ${{ secrets.G_TOKEN }}    
