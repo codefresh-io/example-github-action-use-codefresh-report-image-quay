@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.QUAY_ROBOT_TOKEN }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
+          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action:example-reported-image
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
       - name: report image by action
@@ -32,7 +32,7 @@ jobs:
           CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
 
           # report image 
-          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
+          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
           CF_ENRICHERS: "jira, git"
           # use githug token
           CF_GITHUB_TOKEN: ${{ secrets.G_TOKEN }}    
