@@ -36,7 +36,7 @@ jobs:
           CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action
           CF_ENRICHERS: "jira, git"
           # use githug token
-          CF_GITHUB_TOKEN: ${{ secrets.G_TOKEN }}    
+          CF_GITHUB_TOKEN: ${{ secrets.CF_GITHUB_TOKEN }}    
           # use jira integration
           CF_JIRA_INTEGRATION: "jira"
           CF_JIRA_MESSAGE: "wip CR-11027"
