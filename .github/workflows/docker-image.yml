@@ -22,9 +22,9 @@ jobs:
           password: ${{ secrets.QUAY_ROBOT_TOKEN }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
+          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
         run: |
-          docker build . --file Dockerfile --tag $CF_IMAGE && docker push quay.io/$CF_IMAGE
+          docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
       - name: report image by action
         with:
           # Specify cluster app-proxy
