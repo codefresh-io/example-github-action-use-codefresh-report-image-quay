@@ -33,7 +33,7 @@ jobs:
           CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
 
           # report image 
-          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action
+          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
           CF_ENRICHERS: "jira, git"
           # use githug token
           CF_GITHUB_TOKEN: ${{ secrets.CF_GITHUB_TOKEN }}    
