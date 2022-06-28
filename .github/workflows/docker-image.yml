@@ -24,7 +24,7 @@ jobs:
         env:
           CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
         run: |
-          docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
+          docker build . --file Dockerfile --tag $CF_IMAGE && docker push quay.io/$CF_IMAGE
       - name: report image by action
         with:
           # Specify cluster app-proxy
@@ -33,7 +33,7 @@ jobs:
           CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
 
           # report image 
-          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action
+          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/csdp-report-image-github-action
           CF_ENRICHERS: "jira, git"
           # use githug token
           CF_GITHUB_TOKEN: ${{ secrets.G_TOKEN }}    
