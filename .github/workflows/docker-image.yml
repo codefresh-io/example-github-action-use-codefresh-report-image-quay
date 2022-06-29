@@ -25,6 +25,9 @@ jobs:
           CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
         run: |
           docker build . --file Dockerfile --tag quay.io/$CF_IMAGE && docker push quay.io/$CF_IMAGE
+          echo " image shold be present on your local machine after docker login by:"
+          echo "docker pull $CF_IMAGE"
+          docker pull $CF_IMAGE
       - name: report image by action
         with:
           # Specify cluster app-proxy
