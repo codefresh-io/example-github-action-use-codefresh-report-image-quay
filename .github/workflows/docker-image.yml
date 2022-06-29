@@ -24,7 +24,7 @@ jobs:
         env:
           CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-github-action-example
         run: |
-          docker build . --file Dockerfile --tag quay.io/$CF_IMAGE && docker push quay.io/$CF_IMAGE
+          docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
           echo " image shold be present on your local machine after docker login by:"
           echo "docker pull $CF_IMAGE"
           docker pull $CF_IMAGE
