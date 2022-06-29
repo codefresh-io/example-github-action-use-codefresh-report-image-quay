@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.QUAY_PASSWORD }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
+          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-github-action-example
         run: |
           docker build . --file Dockerfile --tag quay.io/$CF_IMAGE && docker push quay.io/$CF_IMAGE
           echo " image shold be present on your local machine after docker login by:"
@@ -39,7 +39,7 @@ jobs:
           CF_REGISTRY_DOMAIN: "quay.io"
 
           # report image 
-          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
+          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-report-image-github-action
           CF_ENRICHERS: "jira, git"
           # use githug token
           CF_GITHUB_TOKEN: ${{ secrets.CF_GITHUB_TOKEN }}    
