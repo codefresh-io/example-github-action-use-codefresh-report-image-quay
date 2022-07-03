@@ -22,6 +22,7 @@ jobs:
           password: ${{ secrets.QUAY_PASSWORD }}
       - name: Build & push the Docker image
         env:
+          # image name and tag must be specified for that integration to work.
           CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-github-action-example:0.0.2
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
@@ -44,7 +45,7 @@ jobs:
           CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
 
 
-          # report image 
+          # report image - identical name as was pushed in the build step
           CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-github-action-example:0.0.2
           CF_ENRICHERS: "jira, git"
           # use githug token
