@@ -34,10 +34,10 @@ jobs:
           # Specify cluster app-proxy
           CF_HOST: "${{ secrets.CF_HOST_RUNTIME }}"
           CF_API_KEY: ${{ secrets.USER_TOKEN }}
-          # CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
-          CF_REGISTRY_USERNAME: "${{ secrets.QUAY_USERNAME }}" 
-          CF_REGISTRY_PASSWORD: "${{ secrets.QUAY_PASSWORD }}"
-          CF_REGISTRY_DOMAIN: "quay.io"
+           CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
+#          CF_REGISTRY_USERNAME: "${{ secrets.QUAY_USERNAME }}"
+#          CF_REGISTRY_PASSWORD: "${{ secrets.QUAY_PASSWORD }}"
+#          CF_REGISTRY_DOMAIN: "quay.io"
 
           # report image 
           CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-github-action-example
