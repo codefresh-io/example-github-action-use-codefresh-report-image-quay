@@ -40,7 +40,7 @@ jobs:
           CF_REGISTRY_DOMAIN: "quay.io"
 
           # report image 
-          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/quay-github-action-example
+          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/quay-github-action-example:latest
 #          CF_ENRICHERS: "jira, git"
 #          # use githug token
 #          CF_GITHUB_TOKEN: ${{ secrets.CF_GITHUB_TOKEN }}
